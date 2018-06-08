@@ -1,17 +1,17 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = 'lua-term'
-version = '0.6-1'
+version = '0.7-1'
 
 -- LuaDist source
 source = {
-  tag = "0.6-1",
+  tag = "0.7-1",
   url = "git://github.com/LuaDist-testing/lua-term.git"
 }
 -- Original source
 -- source = {
---   url = 'https://github.com/hoelzro/lua-term/archive/0.06.tar.gz',
---   dir = 'lua-term-0.06',
+--   url = 'https://github.com/hoelzro/lua-term/archive/0.07.tar.gz',
+--   dir = 'lua-term-0.07',
 -- }
 
 description = {
