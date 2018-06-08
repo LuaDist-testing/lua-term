@@ -18,7 +18,33 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -- THE SOFTWARE.
 
-local term  = require 'term.core'
+local term    = require 'term.core'
+local sformat = string.format
+local iotype  = io.type
+local stdout  = io.stdout
+
+function term.maketermfunc(sequence_fmt)
+  sequence_fmt = '\027[' .. sequence_fmt
+
+  local func
+
+  func = function(handle, ...)
+    if iotype(handle) ~= 'file' then
+      return func(stdout, handle, ...)
+    end
+
+    return handle:write(sformat(sequence_fmt, ...))
+  end
+
+  return func
+end
+
 term.colors = require 'term.colors'
+term.cursor = require 'term.cursor'
+
+term.clear    = term.maketermfunc '2J'
+term.cleareol = term.maketermfunc 'K'
+
+term.maketermfunc = nil
 
 return term
